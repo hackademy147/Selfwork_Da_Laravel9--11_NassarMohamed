@@ -4,7 +4,7 @@
 
 <h1>Create all Trips</h1>
 
-<form method="POST" action="{{route('show')}}" >
+<form method="POST" action="{{route('trip.store')}}" >
             @if ($errors->any())
           <div class="alert alert-danger">
             <ul>
@@ -15,19 +15,25 @@
             </div>
             @endif
   @csrf
-    <section class="d-flex justify-content-around">
-  <div class="mb-3">
+    
+    <div class="mb-3 mx-5 my-3">
     <label for="name" class="form-label">UserName</label>
     <input type="text" class="form-control" id="name" name="username">
-  </div>
-  </section>
-  <section class="d-flex justify-content-center">
-  <div class="mb-3">
+    </div>
+    <div class="mb-3 mx-5 my-3">
+    <label for="name" class="form-label">From</label>
+    <input type="text" class="form-control" id="name" name="departure">
+    </div>
+    <div class="mb-3 mx-5 my-3">
+    <label for="name" class="form-label">To</label>
+    <input type="text" class="form-control" id="name" name="arrive">
+    </div>
+   <div class="mb-3 mx-5 my-3">
     <label for="tipo" class="form-label">Tipo di viaggio</label>
     <input type="text" class="form-control" id="tipo"  name="title">
-      <button type="submit" class="btn btn-primary">invia</button>
+    <button type="submit" class="btn btn-primary">invia</button>
     </div>
-</section>
+
 </form>
 
 </x-layout>

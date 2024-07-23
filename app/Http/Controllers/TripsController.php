@@ -18,22 +18,47 @@ class TripsController extends Controller implements HasMiddleware
         ];
     }
     public function create(){
-        return view('CreateTrips');
+        return view('trip.CreateTrips');
     }
 
     public function store(TripRequest $request){
        $trip= Trip::create([
         'username'=>$request->username,
-        'titolo'=>$request->title
+        'titolo'=>$request->title,
+        'partenza'=>$request->departure,
+        'arrivo'=>$request->arrive
         ]);
     return redirect(route('home'))->with('success','viaggio inserito');
 }
 
-public function index(){
+    public function index(){
     $trips= Trip::all();
     return view('trip.index', compact('trips'));
+    }
+    
+    public function show(Trip $trip){
+    return view('trip.show', compact('trip'));
+    }
+
+    public function edit(Trip $trip){
+        return view('trip.edit', compact('trip'));
+        }
+
+    public function update( Trip $trip, TripRequest $request){
+    
+        //$trip= Trip::update
+        $trip->update([
+            'username'=>$request->username,
+            'titolo'=>$request->title,
+            'partenza'=>$request->departure,
+            'arrivo'=>$request->arrive
+            ]);
+
+            return redirect(route('trip.show', $trip))->with('Done','viaggio modificato');
 }
 
-
-
+    public function destroy(Trip $trip){
+        $trip->delete();
+        return redirect(route('trip.index', $trip))->with('gameDeleted','viaggio eliminato');
+    }
 }

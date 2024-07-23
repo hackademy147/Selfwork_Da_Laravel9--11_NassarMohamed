@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->string('titolo');
+            $table->string('partenza');
+            $table->string('arrivo');
             $table->timestamps();
         });
     }
