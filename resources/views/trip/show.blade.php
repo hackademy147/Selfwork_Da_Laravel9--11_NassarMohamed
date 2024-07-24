@@ -18,7 +18,11 @@
                  @csrf
                  <button type="submit" class="btn btn-primary">Elimina</button>
             </form>
+            <h6>Il gioco è stato inserito da: {{$trip->user->name ?? 'Utente sconosciuto'}}</h6>
             </div>
         </div>
     </div>
+
+
+
 </x-layout>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use App\Http\Requests\TripRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TripsController;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -26,7 +27,8 @@ class TripsController extends Controller implements HasMiddleware
         'username'=>$request->username,
         'titolo'=>$request->title,
         'partenza'=>$request->departure,
-        'arrivo'=>$request->arrive
+        'arrivo'=>$request->arrive,
+        'user_id'=>Auth::user()->id,
         ]);
     return redirect(route('home'))->with('success','viaggio inserito');
 }
@@ -51,7 +53,8 @@ class TripsController extends Controller implements HasMiddleware
             'username'=>$request->username,
             'titolo'=>$request->title,
             'partenza'=>$request->departure,
-            'arrivo'=>$request->arrive
+            'arrivo'=>$request->arrive,
+            'user_id'=>Auth::user()->id
             ]);
 
             return redirect(route('trip.show', $trip))->with('Done','viaggio modificato');
