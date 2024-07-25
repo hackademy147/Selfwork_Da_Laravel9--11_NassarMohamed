@@ -13,7 +13,14 @@
           <a class="nav-link" href="{{route('trip.create')}}">inserisci evento</a>
         </li> 
         <li class="nav-item">
+          <a class="nav-link" href="{{route('company.create')}}">inserisci compagnia</a>
+        </li>
+  
+        <li class="nav-item">
           <a class="nav-link" href="{{route('trip.index')}}">Tutti Eventi</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('company.index')}}">Tutte le compagnie</a>
         </li> 
         @guest
             
@@ -37,24 +44,20 @@
             Benvenuto
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Benvenuto {{Auth::user()->name}}</a></li>
-            <li><a class="dropdown-item" href="#">Another </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="{{route('auth.dashboard')}}">Benvenuto {{Auth::user()->name}}</a></li>
+            <li class="dropdown-item">
+              <a class="nav-link active" aria-current="page" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">logout</a>
+              <form action="{{route('logout')}}" method="POST" class="d-none" id="form-logout">
+    
+    
+                @csrf
+    
+              </form>
+            </li>
           </ul>
         </li>
         @endauth
         
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" onclick="event.preventDefault();  document.querySelector('#form-logout').submit();">logout</a>
-          
-          <form action="{{route('logout')}}" method="POST" class="d-none" id="form-logout">
-
-
-            @csrf
-
-          </form>
-          
         </ul>
     </div>
   </div>

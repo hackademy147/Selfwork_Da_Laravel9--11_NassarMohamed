@@ -6,6 +6,12 @@
     </div>
 @endif
 
+@if (session('CompanyCreated'))
+    <div class="alert alert-success">
+        {{ session('CompanyCreated') }}
+    </div>
+@endif
+
 <x-layout>
  <div>
     <h1>Nassar Airlines</h1>

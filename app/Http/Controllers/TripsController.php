@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trip;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\TripRequest;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,9 @@ class TripsController extends Controller implements HasMiddleware
         ];
     }
     public function create(){
-        return view('trip.CreateTrips');
+        $comapies=Company::all();
+        $categories=Category::all();
+        return view('trip.CreateTrips', compact('categories' ,'companies'));
     }
 
     public function store(TripRequest $request){
@@ -29,6 +32,7 @@ class TripsController extends Controller implements HasMiddleware
         'partenza'=>$request->departure,
         'arrivo'=>$request->arrive,
         'user_id'=>Auth::user()->id,
+        'category_id'=>$request->category_id
         ]);
     return redirect(route('home'))->with('success','viaggio inserito');
 }

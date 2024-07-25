@@ -20,14 +20,26 @@
     <label for="name" class="form-label">UserName</label>
     <input type="text" class="form-control" id="name" name="username">
     </div>
+
     <div class="mb-3 mx-5 my-3">
     <label for="name" class="form-label">From</label>
     <input type="text" class="form-control" id="name" name="departure">
     </div>
+
     <div class="mb-3 mx-5 my-3">
     <label for="name" class="form-label">To</label>
     <input type="text" class="form-control" id="name" name="arrive">
     </div>
+
+    <div class="mb-3 mx-5 my-3">
+    <select class="form-select" id="category_id" name="category_id" >
+      <option selected>Open this select menu</option>
+      @foreach ($categories as $category)
+      <option value="{{$category->id}}">{{$category->name}}</option>
+      @endforeach
+    </select>
+   </div>
+
    <div class="mb-3 mx-5 my-3">
     <label for="tipo" class="form-label">Tipo di viaggio</label>
     <input type="text" class="form-control" id="tipo"  name="title">

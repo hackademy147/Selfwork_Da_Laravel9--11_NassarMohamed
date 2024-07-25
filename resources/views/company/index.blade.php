@@ -17,12 +17,12 @@
 
     <div class="container my-5">
         <div class ="row">
-            @foreach ($trips as $trip)
+            @foreach ($companies as $company)
             <div class="col-12 col-md-3">
-                <x-card :oggetto="$trip"
-                username="{{$trip->username}}"
-                sottotitolo="{{$trip->titolo}}"
-                url="trip.show"
+                <x-card :oggetto="$company"
+                username="{{$company->username}}"
+                sottotitolo="{{$company->nation}}"
+                url="company.show"
                 
                 />
             </div>

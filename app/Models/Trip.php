@@ -10,10 +10,17 @@ class Trip extends Model
 {
     use HasFactory;
     protected $fillable=[
-           'username', 'titolo','partenza','arrivo','user_id',
+           'username', 'titolo','partenza','arrivo','user_id','category_id'
     ];
 
     public function User(){
         return $this->belongsTo(User::class);
+    }
+
+    public function Category(){
+        return $this->belongsTo(User::class);
+    }
+    public function companies(){
+        return $this->belongsToMany(Company::class);
     }
 }
